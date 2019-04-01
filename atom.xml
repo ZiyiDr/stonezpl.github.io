@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-01T09:19:28.385Z</updated>
+  <updated>2019-03-21T12:02:50.986Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,27 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>zookeeper入门篇(一)</title>
-    <link href="http://yoursite.com/2019/03/27/zookeeper-md/"/>
-    <id>http://yoursite.com/2019/03/27/zookeeper-md/</id>
-    <published>2019-03-27T09:05:52.000Z</published>
-    <updated>2019-04-01T09:19:28.385Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="一、ZOOKEEPER介绍"><a href="#一、ZOOKEEPER介绍" class="headerlink" title="一、ZOOKEEPER介绍"></a>一、ZOOKEEPER介绍</h2><p><strong>简介</strong><br> Zookeeper致力于提供一个<strong>高性能</strong>、<strong>高可用</strong>，且具备<strong>严格的顺序访问</strong>控制能力的分布式协调服务。</p><p><strong>设计目标</strong></p><ul><li><strong>简单的数据结构:</strong>共享的树形结构，类似文件系统，存储于内存;</li><li><strong>可以构建集群:</strong>避免单点故障，3-5台机器就可以组成集群，超过半数，正常工作就能对外提供服务;</li><li><strong>顺序访问:</strong>对于每个写请求，zk会分配一个全局唯一的递增编号，利用 这个特性可以实现高级协调服务;</li><li><strong>高性能:</strong>基于内存操作，服务于非事务请求，适用于读操作为主的业务 场景。3台zk集群能达到13w QPS;</li></ul><p><strong>应用场景</strong></p><ol><li>数据发布订阅 </li><li>负载均衡</li><li>命名服务</li><li>Master选举 </li><li>集群管理</li><li>配置管理 </li><li>分布式队列 </li><li>分布式锁</li></ol><h2 id="二、zookeeper特性"><a href="#二、zookeeper特性" class="headerlink" title="二、zookeeper特性"></a>二、zookeeper特性</h2><p><strong>会话(session):</strong>客户端与服务端的一次会话连接，本质是TCP长连接，通过会话可以进行心跳检测和数据传输;</p><p><strong>数据节点(znode)</strong></p><ol><li>持久节点(PERSISTENT)</li><li>持久顺序节点(PERSISTENT_SEQUENTIAL)</li><li>临时节点(EPHEMERAL)</li><li>临时顺序节点(EPHEMERAL_SEQUENTIAL)<br>对于持久节点和临时节点，同一个znode下，节点的名称是唯一的:[center red 20px]<br><img src="/2019/03/27/zookeeper-md/zookeeper1.png" alt></li></ol><p><strong>Watcher 事件监听器:</strong>客户端可以在节点上注册监听器，当特定的事件发生后，zk会通知到感兴趣的客户端。<br>EventType: NodeCreated、NodeDeleted、NodeDataChanged、NodeChildrenChange</p><p><strong>ACL:</strong>Zk采用ACL(access control lists)策略来控制权限<br>权限类型:create,read,write,delete,admin</p><h2 id="三、zookeeper常用命令"><a href="#三、zookeeper常用命令" class="headerlink" title="三、zookeeper常用命令"></a>三、zookeeper常用命令</h2><ol><li>启动ZK服务: bin/zkServer.sh start</li><li>查看ZK服务状态:bin/zkServer.sh status</li><li>停止ZK服务: bin/zkServer.sh stop</li><li>重启ZK服务: bin/zkServer.sh restart</li><li>客户端连接：zkCli.sh -server 127.0.0.1:2181</li><li>显示目录：ls /</li><li>创建：create /zk “test”</li><li>获得值：get /zk</li><li>修改值：set /zk “test”</li><li>删除：delete /zk</li><li>ACL: <ul><li>getAcl / setAcl</li><li>addauth</li></ul></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;一、ZOOKEEPER介绍&quot;&gt;&lt;a href=&quot;#一、ZOOKEEPER介绍&quot; class=&quot;headerlink&quot; title=&quot;一、ZOOKEEPER介绍&quot;&gt;&lt;/a&gt;一、ZOOKEEPER介绍&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;简介&lt;/strong&gt;&lt;br&gt; Zo
-      
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>Hello World</title>
