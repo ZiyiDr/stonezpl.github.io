@@ -147,7 +147,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 2 words)
+                    3 minutes read (About 478 words)
                 </span>
                 
                 
@@ -156,11 +156,40 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/03/27/zookeeper-md/">zookeeper.md</a>
+                <a class="has-link-black-ter" href="/2019/03/27/zookeeper-md/">zookeeper入门篇(一)</a>
             
         </h1>
         <div class="content">
-            <p><img src="/2019/03/27/zookeeper-md/test.jpg" alt></p>
+            <h2 id="一、ZOOKEEPER介绍"><a href="#一、ZOOKEEPER介绍" class="headerlink" title="一、ZOOKEEPER介绍"></a>一、ZOOKEEPER介绍</h2><p><strong>简介</strong><br> Zookeeper致力于提供一个<strong>高性能</strong>、<strong>高可用</strong>，且具备<strong>严格的顺序访问</strong>控制能力的分布式协调服务。</p>
+<p><strong>设计目标</strong></p>
+<ul>
+<li><strong>简单的数据结构:</strong>共享的树形结构，类似文件系统，存储于内存;</li>
+<li><strong>可以构建集群:</strong>避免单点故障，3-5台机器就可以组成集群，超过半数，正常工作就能对外提供服务;</li>
+<li><strong>顺序访问:</strong>对于每个写请求，zk会分配一个全局唯一的递增编号，利用 这个特性可以实现高级协调服务;</li>
+<li><strong>高性能:</strong>基于内存操作，服务于非事务请求，适用于读操作为主的业务 场景。3台zk集群能达到13w QPS;</li>
+</ul>
+<p><strong>应用场景</strong></p>
+<ol>
+<li>数据发布订阅 </li>
+<li>负载均衡</li>
+<li>命名服务</li>
+<li>Master选举 </li>
+<li>集群管理</li>
+<li>配置管理 </li>
+<li>分布式队列 </li>
+<li>分布式锁</li>
+</ol>
+<h2 id="二、zookeeper特性"><a href="#二、zookeeper特性" class="headerlink" title="二、zookeeper特性"></a>二、zookeeper特性</h2><p><strong>会话(session):</strong>客户端与服务端的一次会话连接，本质是TCP长连接，通过会话可以进行心跳检测和数据传输;</p>
+<p><strong>数据节点(znode)</strong></p>
+<ol>
+<li>持久节点(PERSISTENT)</li>
+<li>持久顺序节点(PERSISTENT_SEQUENTIAL)</li>
+<li>临时节点(EPHEMERAL)</li>
+<li>临时顺序节点(EPHEMERAL_SEQUENTIAL)<br>对于持久节点和临时节点，同一个znode下，节点的名称是唯一的:[center red 20px]<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A[/]  --&gt;B[/叶子节点1]</span><br><span class="line">A[/]  --&gt; C[/叶子节点2]</span><br><span class="line">A[/]  --&gt; D[/叶子节点3]</span><br><span class="line">B[/叶子节点1]  --&gt;E[/叶子节点1-1]</span><br><span class="line">C[/叶子节点2]  --&gt; F[/叶子节点2-1]</span><br><span class="line">D[/叶子节点3]  --&gt; G[/叶子节点3-1]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>Watcher 事件监听器:</strong>客户端可以在节点上注册监听器，当特定的事件发生后，zk会通知到感兴趣的客户端。<br>EventType: NodeCreated、NodeDeleted、NodeDataChanged、NodeChildrenChange</p>
+<p><strong>ACL:</strong>Zk采用ACL(access control lists)策略来控制权限，5中权限:create,read,write,delete,admin</p>
 
         </div>
         
@@ -405,16 +434,10 @@
         
         <article class="media">
             
-            <a href="/2019/03/27/zookeeper-md/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="zookeeper.md">
-                </p>
-            </a>
-            
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-27T09:05:52.000Z">2019-03-27</time></div>
-                    <a href="/2019/03/27/zookeeper-md/" class="has-link-black-ter is-size-6">zookeeper.md</a>
+                    <a href="/2019/03/27/zookeeper-md/" class="has-link-black-ter is-size-6">zookeeper入门篇(一)</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -423,12 +446,6 @@
         </article>
         
         <article class="media">
-            
-            <a href="/2019/03/21/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
             
             <div class="media-content">
                 <div class="content">
@@ -502,16 +519,10 @@
         
         <article class="media">
             
-            <a href="/2019/03/27/zookeeper-md/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="zookeeper.md">
-                </p>
-            </a>
-            
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-27T09:05:52.000Z">2019-03-27</time></div>
-                    <a href="/2019/03/27/zookeeper-md/" class="has-link-black-ter is-size-6">zookeeper.md</a>
+                    <a href="/2019/03/27/zookeeper-md/" class="has-link-black-ter is-size-6">zookeeper入门篇(一)</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -520,12 +531,6 @@
         </article>
         
         <article class="media">
-            
-            <a href="/2019/03/21/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
             
             <div class="media-content">
                 <div class="content">
