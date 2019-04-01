@@ -147,7 +147,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 429 words)
+                    3 minutes read (About 517 words)
                 </span>
                 
                 
@@ -188,7 +188,24 @@
 <li>临时顺序节点(EPHEMERAL_SEQUENTIAL)<br>对于持久节点和临时节点，同一个znode下，节点的名称是唯一的:[center red 20px]<br><img src="/2019/03/27/zookeeper-md/zookeeper1.png" alt></li>
 </ol>
 <p><strong>Watcher 事件监听器:</strong>客户端可以在节点上注册监听器，当特定的事件发生后，zk会通知到感兴趣的客户端。<br>EventType: NodeCreated、NodeDeleted、NodeDataChanged、NodeChildrenChange</p>
-<p><strong>ACL:</strong>Zk采用ACL(access control lists)策略来控制权限，5中权限:create,read,write,delete,admin</p>
+<p><strong>ACL:</strong>Zk采用ACL(access control lists)策略来控制权限<br>权限类型:create,read,write,delete,admin</p>
+<h2 id="三、zookeeper常用命令"><a href="#三、zookeeper常用命令" class="headerlink" title="三、zookeeper常用命令"></a>三、zookeeper常用命令</h2><ol>
+<li>启动ZK服务: bin/zkServer.sh start</li>
+<li>查看ZK服务状态:bin/zkServer.sh status</li>
+<li>停止ZK服务: bin/zkServer.sh stop</li>
+<li>重启ZK服务: bin/zkServer.sh restart</li>
+<li>客户端连接：zkCli.sh -server 127.0.0.1:2181</li>
+<li>显示目录：ls /</li>
+<li>创建：create /zk “test”</li>
+<li>获得值：get /zk</li>
+<li>修改值：set /zk “test”</li>
+<li>删除：delete /zk</li>
+<li>ACL: <ul>
+<li>getAcl / setAcl</li>
+<li>addauth</li>
+</ul>
+</li>
+</ol>
 
         </div>
         
