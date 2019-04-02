@@ -5,12 +5,12 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://stonezpl.github.io/"/>
   <updated>2019-04-02T02:13:15.443Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://stonezpl.github.io/</id>
   
   <author>
-    <name>张珮磊想静静</name>
+    <name>张珮磊</name>
     
   </author>
   
@@ -18,8 +18,8 @@
   
   <entry>
     <title>linux 常用命令(持续更新)</title>
-    <link href="http://yoursite.com/2019/04/01/linux/"/>
-    <id>http://yoursite.com/2019/04/01/linux/</id>
+    <link href="https://stonezpl.github.io/2019/04/01/linux/"/>
+    <id>https://stonezpl.github.io/2019/04/01/linux/</id>
     <published>2019-04-01T12:48:19.000Z</published>
     <updated>2019-04-02T02:13:15.443Z</updated>
     
@@ -35,7 +35,7 @@
     
     </summary>
     
-      <category term="linux" scheme="http://yoursite.com/categories/linux/"/>
+      <category term="linux" scheme="https://stonezpl.github.io/categories/linux/"/>
     
     
   </entry>
