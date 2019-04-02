@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-01T13:43:27.213Z</updated>
+  <updated>2019-04-02T02:11:18.797Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2019/04/01/linux/"/>
     <id>http://yoursite.com/2019/04/01/linux/</id>
     <published>2019-04-01T12:48:19.000Z</published>
-    <updated>2019-04-01T13:43:27.213Z</updated>
+    <updated>2019-04-02T02:11:18.797Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="查看磁盘空间大小"><a href="#查看磁盘空间大小" class="headerlink" title="查看磁盘空间大小"></a>查看磁盘空间大小</h1><ol><li>查看磁盘空间大小: df -h<img src="/2019/04/01/linux/linux001.png" alt></li><li>查看指定目录大小: du -sh &lt;目录名&gt;<img src="/2019/04/01/linux/linux002.png" alt></li><li>du -h [目录名]：查看指定文件夹下的所有文件大小（包含子文件夹)</li><li>对文件大小进行排序(进入当前目录下)：<img src="/2019/04/01/linux/linux003.png" alt></li></ol><h1 id="文本查询相关"><a href="#文本查询相关" class="headerlink" title="文本查询相关"></a>文本查询相关</h1><ol><li>统计某个词出现频率<img src="/2019/04/01/linux/linux004..png" alt></li><li>统计单词次数并按次数排序(每一行为一个单词):<img src="/2019/04/01/linux/linux005.png" alt></li><li>按照分隔符分词，然后排序，去重：<img src="/2019/04/01/linux/linux006.png" alt></li></ol>]]></content>
+    <content type="html"><![CDATA[<h1 id="查看磁盘空间大小"><a href="#查看磁盘空间大小" class="headerlink" title="查看磁盘空间大小"></a>查看磁盘空间大小</h1><ol><li>查看磁盘空间大小: df -h<img src="/2019/04/01/linux/linux001.png" alt></li><li>查看指定目录大小: du -sh &lt;目录名&gt;<img src="/2019/04/01/linux/linux002.png" alt></li><li>du -h [目录名]：查看指定文件夹下的所有文件大小（包含子文件夹)</li><li>对文件大小进行排序(进入当前目录下)：<img src="/2019/04/01/linux/linux003.png" alt></li></ol><h1 id="文本查询相关"><a href="#文本查询相关" class="headerlink" title="文本查询相关"></a>文本查询相关</h1><ol><li>统计某个词出现频率<img src="/2019/04/01/linux/linux004.png" alt></li><li>统计单词次数并按次数排序(每一行为一个单词):<img src="/2019/04/01/linux/linux005.png" alt></li><li>按照分隔符分词，然后排序，去重：<img src="/2019/04/01/linux/linux006.png" alt></li></ol><h1 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h1><ol><li>查看端口占用进程和进程占用端口<img src="/2019/04/01/linux/linux.007.png" alt></li></ol>]]></content>
     
     <summary type="html">
     
@@ -36,27 +36,6 @@
     </summary>
     
       <category term="linux" scheme="http://yoursite.com/categories/linux/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2019/03/21/hello-world/"/>
-    <id>http://yoursite.com/2019/03/21/hello-world/</id>
-    <published>2019-03-21T12:02:50.986Z</published>
-    <updated>2019-03-21T12:02:50.986Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="hljs-string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-      
-    
-    </summary>
     
     
   </entry>
