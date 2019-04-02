@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-02T02:11:18.797Z</updated>
+  <updated>2019-04-02T02:13:15.443Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2019/04/01/linux/"/>
     <id>http://yoursite.com/2019/04/01/linux/</id>
     <published>2019-04-01T12:48:19.000Z</published>
-    <updated>2019-04-02T02:11:18.797Z</updated>
+    <updated>2019-04-02T02:13:15.443Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="查看磁盘空间大小"><a href="#查看磁盘空间大小" class="headerlink" title="查看磁盘空间大小"></a>查看磁盘空间大小</h1><ol><li>查看磁盘空间大小: df -h<img src="/2019/04/01/linux/linux001.png" alt></li><li>查看指定目录大小: du -sh &lt;目录名&gt;<img src="/2019/04/01/linux/linux002.png" alt></li><li>du -h [目录名]：查看指定文件夹下的所有文件大小（包含子文件夹)</li><li>对文件大小进行排序(进入当前目录下)：<img src="/2019/04/01/linux/linux003.png" alt></li></ol><h1 id="文本查询相关"><a href="#文本查询相关" class="headerlink" title="文本查询相关"></a>文本查询相关</h1><ol><li>统计某个词出现频率<img src="/2019/04/01/linux/linux004.png" alt></li><li>统计单词次数并按次数排序(每一行为一个单词):<img src="/2019/04/01/linux/linux005.png" alt></li><li>按照分隔符分词，然后排序，去重：<img src="/2019/04/01/linux/linux006.png" alt></li></ol><h1 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h1><ol><li>查看端口占用进程和进程占用端口<img src="/2019/04/01/linux/linux.007.png" alt></li></ol>]]></content>
+    <content type="html"><![CDATA[<h1 id="查看磁盘空间大小"><a href="#查看磁盘空间大小" class="headerlink" title="查看磁盘空间大小"></a>查看磁盘空间大小</h1><ol><li>查看磁盘空间大小: df -h<img src="/2019/04/01/linux/linux001.png" alt></li><li>查看指定目录大小: du -sh &lt;目录名&gt;<img src="/2019/04/01/linux/linux002.png" alt></li><li>du -h [目录名]：查看指定文件夹下的所有文件大小（包含子文件夹)</li><li>对文件大小进行排序(进入当前目录下)：<img src="/2019/04/01/linux/linux003.png" alt></li></ol><h1 id="文本查询相关"><a href="#文本查询相关" class="headerlink" title="文本查询相关"></a>文本查询相关</h1><ol><li>统计某个词出现频率<img src="/2019/04/01/linux/linux004.png" alt></li><li>统计单词次数并按次数排序(每一行为一个单词):<img src="/2019/04/01/linux/linux005.png" alt></li><li>按照分隔符分词，然后排序，去重：<img src="/2019/04/01/linux/linux006.png" alt></li></ol><h1 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h1><ol><li>查看端口占用进程和进程占用端口<img src="/2019/04/01/linux/linux007.png" alt></li></ol>]]></content>
     
     <summary type="html">
     
