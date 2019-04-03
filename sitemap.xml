@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://stonezpl.github.io/2019/04/01/linux/</loc>
+    
+    <lastmod>2019-04-03T14:28:49.250Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://stonezpl.github.io/2019/04/03/redis/</loc>
     
     <lastmod>2019-04-03T12:20:42.078Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://stonezpl.github.io/about/index.html</loc>
     
     <lastmod>2019-04-02T14:35:58.752Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://stonezpl.github.io/2019/04/01/linux/</loc>
-    
-    <lastmod>2019-04-02T02:13:15.443Z</lastmod>
     
   </url>
   
