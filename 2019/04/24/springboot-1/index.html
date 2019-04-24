@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>springboot(三)——application.properties和application.yml是何时解析的 - 张珮磊想静静</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="前言用过的springboot的小伙伴都知道springboot不需要再像springmvc引入那么多的配置文件，只需要加入application.properties或者application.yml即可，比如在上一篇文章讲到数据库的配置，只需要在文件引入如下的配置即可：1234spring.datasource.url=jdbc:mysql://127.0.0.1:3306/zplxjj?us">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springboot(三)——application.properties和application.yml是何时解析的">
+<meta property="og:url" content="https://stonezpl.github.io/2019/04/24/springboot-1/index.html">
+<meta property="og:site_name" content="张珮磊想静静">
+<meta property="og:description" content="前言用过的springboot的小伙伴都知道springboot不需要再像springmvc引入那么多的配置文件，只需要加入application.properties或者application.yml即可，比如在上一篇文章讲到数据库的配置，只需要在文件引入如下的配置即可：1234spring.datasource.url=jdbc:mysql://127.0.0.1:3306/zplxjj?us">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://stonezpl.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-04-24T14:44:16.308Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="springboot(三)——application.properties和application.yml是何时解析的">
+<meta name="twitter:description" content="前言用过的springboot的小伙伴都知道springboot不需要再像springmvc引入那么多的配置文件，只需要加入application.properties或者application.yml即可，比如在上一篇文章讲到数据库的配置，只需要在文件引入如下的配置即可：1234spring.datasource.url=jdbc:mysql://127.0.0.1:3306/zplxjj?us">
+<meta name="twitter:image" content="https://stonezpl.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="springboot(三)——application.properties和application.yml是何时解析的" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">主页</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/about">关于静静</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/stonezpl">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-04-24T14:39:17.000Z">2019-04-24</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/springboot/">springboot</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 分钟 读完 (大约 1177 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                springboot(三)——application.properties和application.yml是何时解析的
+            
+        </h1>
+        <div class="content">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>用过的springboot的小伙伴都知道springboot不需要再像springmvc引入那么多的配置文件，只需要加入application.properties或者application.yml即可，比如在上一篇文章讲到数据库的配置，只需要在文件引入如下的配置即可：<br><figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring.datasource.url=jdbc:mysql://127.0.0.1:3306/zplxjj?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=GMT%2B8</span><br><span class="line">spring.datasource.username=root</span><br><span class="line">spring.datasource.password=@ZPLxjj12345</span><br><span class="line">spring.datasource.driver-class-name=com.mysql.jdbc.Driver</span><br></pre></td></tr></table></figure></p>
+<p>下面简单介绍下springboot在启动的时候是在何时读取的properties和yml文件的内容的<br><a id="more"></a></p>
+<h2 id="实现一个简单的自定义监听器"><a href="#实现一个简单的自定义监听器" class="headerlink" title="实现一个简单的自定义监听器"></a>实现一个简单的自定义监听器</h2><p><strong>第一步：</strong>定义一个event，继承ApplicationEvent<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomerApplicationEvent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ApplicationEvent</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CustomerApplicationEvent</span><span class="hljs-params">(Object source)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">super</span>(source);</span><br><span class="line">        System.out.println(<span class="hljs-string">"CustomerApplicationEvent constructor..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>第二步：</strong>定义一个listener<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Component</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomerApplicationListener</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ApplicationListener</span>&lt;<span class="hljs-title">CustomerApplicationEvent</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onApplicationEvent</span><span class="hljs-params">(CustomerApplicationEvent customerApplicationEvent)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="hljs-string">"customerApplicationEvent:"</span>+customerApplicationEvent.getClass().getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>第三步：</strong>注册监听器<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@SpringBootApplication</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Application</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);</span><br><span class="line">        <span class="hljs-comment">// 注册 CustomerApplicationListener 事件监听器</span></span><br><span class="line">        context.addApplicationListener(<span class="hljs-keyword">new</span> CustomerApplicationListener());</span><br><span class="line">        <span class="hljs-comment">// 发布 CustomerApplicationEvent 事件</span></span><br><span class="line">        context.publishEvent(<span class="hljs-keyword">new</span> CustomerApplicationEvent(<span class="hljs-keyword">new</span> Object()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>启动项目后，会发现控制台输出了：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CustomerApplicationEvent constructor...</span><br><span class="line">customerApplicationEvent:com.stone.zplxjj.event.CustomerApplicationEvent</span><br></pre></td></tr></table></figure></p>
+<h2 id="springboot自带的事件"><a href="#springboot自带的事件" class="headerlink" title="springboot自带的事件"></a>springboot自带的事件</h2><ul>
+<li>ApplicationStartingEvent：应用启动事件，在调用 SpringApplication.run() 方法之前，可以从中获取到 SpringApplication 对象，进行一些启动前设置。</li>
+<li><strong>ApplicationEnvironmentPreparedEvent：Environment准备完成事件，此时可以从中获取到 Environment 对象并对其中的配置项进行查看或者修改</strong>。</li>
+<li>ApplicationPreparedEvent：ApplicationContext准备完成事件，接下来 Spring 就能够向容器中加载 Bean 了 。</li>
+<li>ApplicationReadyEvent：应用准备完成事件，预示着应用可以接收和处理请求了。</li>
+<li>ApplicationFailedEvent：应用启动失败事件，可以从中捕获到启动失败的异常信息进行相应处理，例如：添加虚拟机对应的钩子进行资源的回收与释放。</li>
+</ul>
+<h2 id="读取配置代码入口：ApplicationEnvironmentPreparedEvent和ConfigFileApplicationListener"><a href="#读取配置代码入口：ApplicationEnvironmentPreparedEvent和ConfigFileApplicationListener" class="headerlink" title="读取配置代码入口：ApplicationEnvironmentPreparedEvent和ConfigFileApplicationListener"></a>读取配置代码入口：ApplicationEnvironmentPreparedEvent和ConfigFileApplicationListener</h2><p>加载配置文件需要用到ConfigFileApplicationListener，其代码如下：<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Override</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onApplicationEvent</span><span class="hljs-params">(ApplicationEvent event)</span> </span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span> (event <span class="hljs-keyword">instanceof</span> ApplicationEnvironmentPreparedEvent) &#123;</span><br><span class="line">		onApplicationEnvironmentPreparedEvent(</span><br><span class="line">				(ApplicationEnvironmentPreparedEvent) event);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">if</span> (event <span class="hljs-keyword">instanceof</span> ApplicationPreparedEvent) &#123;</span><br><span class="line">		onApplicationPreparedEvent(event);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>进入方法：onApplicationEnvironmentPreparedEvent<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onApplicationEnvironmentPreparedEvent</span><span class="hljs-params">(</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">		ApplicationEnvironmentPreparedEvent event)</span> </span>&#123;</span><br><span class="line">	List&lt;EnvironmentPostProcessor&gt; postProcessors = loadPostProcessors();</span><br><span class="line">	postProcessors.add(<span class="hljs-keyword">this</span>);</span><br><span class="line">	AnnotationAwareOrderComparator.sort(postProcessors);</span><br><span class="line">	<span class="hljs-keyword">for</span> (EnvironmentPostProcessor postProcessor : postProcessors) &#123;</span><br><span class="line">		postProcessor.postProcessEnvironment(event.getEnvironment(),</span><br><span class="line">				event.getSpringApplication());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>进入postProcessor.postProcessEnvironment：<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-comment">//类：ConfigFileApplicationListener</span></span><br><span class="line"><span class="hljs-meta">@Override</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">postProcessEnvironment</span><span class="hljs-params">(ConfigurableEnvironment environment,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">		SpringApplication application)</span> </span>&#123;</span><br><span class="line">	addPropertySources(environment, application.getResourceLoader());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>进入addPropertySources<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addPropertySources</span><span class="hljs-params">(ConfigurableEnvironment environment,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">		ResourceLoader resourceLoader)</span> </span>&#123;</span><br><span class="line">       <span class="hljs-comment">//将随机方法放入到PropertySources中</span></span><br><span class="line">	RandomValuePropertySource.addToEnvironment(environment);</span><br><span class="line">       <span class="hljs-comment">//load加载</span></span><br><span class="line">	<span class="hljs-keyword">new</span> Loader(environment, resourceLoader).load();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>进入load方法：<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">load</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">	<span class="hljs-keyword">this</span>.profiles = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">	<span class="hljs-keyword">this</span>.processedProfiles = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">	<span class="hljs-keyword">this</span>.activatedProfiles = <span class="hljs-keyword">false</span>;</span><br><span class="line">	<span class="hljs-keyword">this</span>.loaded = <span class="hljs-keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line">	initializeProfiles();</span><br><span class="line">	<span class="hljs-keyword">while</span> (!<span class="hljs-keyword">this</span>.profiles.isEmpty()) &#123;</span><br><span class="line">		Profile profile = <span class="hljs-keyword">this</span>.profiles.poll();</span><br><span class="line">		<span class="hljs-keyword">if</span> (profile != <span class="hljs-keyword">null</span> &amp;&amp; !profile.isDefaultProfile()) &#123;</span><br><span class="line">			addProfileToEnvironment(profile.getName());</span><br><span class="line">		&#125;</span><br><span class="line">		load(profile, <span class="hljs-keyword">this</span>::getPositiveProfileFilter,</span><br><span class="line">				addToLoaded(MutablePropertySources::addLast, <span class="hljs-keyword">false</span>));</span><br><span class="line">		<span class="hljs-keyword">this</span>.processedProfiles.add(profile);</span><br><span class="line">	&#125;</span><br><span class="line">	resetEnvironmentProfiles(<span class="hljs-keyword">this</span>.processedProfiles);</span><br><span class="line">	load(<span class="hljs-keyword">null</span>, <span class="hljs-keyword">this</span>::getNegativeProfileFilter,</span><br><span class="line">			addToLoaded(MutablePropertySources::addFirst, <span class="hljs-keyword">true</span>));</span><br><span class="line">	addLoadedPropertySources();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>进入字方法load<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">load</span><span class="hljs-params">(Profile profile, DocumentFilterFactory filterFactory,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">		DocumentConsumer consumer)</span> </span>&#123;</span><br><span class="line">	getSearchLocations().forEach((location) -&gt; &#123;</span><br><span class="line">		<span class="hljs-keyword">boolean</span> isFolder = location.endsWith(<span class="hljs-string">"/"</span>);</span><br><span class="line">		Set&lt;String&gt; names = isFolder ? getSearchNames() : NO_SEARCH_NAMES;</span><br><span class="line">		names.forEach(</span><br><span class="line">				(name) -&gt; load(location, name, profile, filterFactory, consumer));</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>getSearchLocations():首先看CONFIG_LOCATION_PROPERTY，是否存在配置，无则走默认配置路径DEFAULT_SEARCH_LOCATIONS</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * The "config location" property name.</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String CONFIG_LOCATION_PROPERTY = <span class="hljs-string">"spring.config.location"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// Note the order is from least to most specific (last one wins)</span></span><br><span class="line"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String DEFAULT_SEARCH_LOCATIONS = <span class="hljs-string">"classpath:/,classpath:/config/,file:./,file:./config/"</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>getSearchNames():首先看CONFIG_NAME_PROPERTY(spring.config.name)配置，否则走DEFAULT_NAMES(application)</p>
+</li>
+</ul>
+<p><strong>spring.config.name说明：</strong>假如你不喜欢“application.properties”这个默认文件名，你可以重新设定：spring.config.name属性直接指定属性文件名称，spring.config.location属性指定明确路径，但是要注意不能写在application.properties文件里，这样会不起作用，可以写在java -jar xxx.jar –spring.config.name=custom.properties,还可以通过环境变量等方式,yml文件也可以这样</p>
+<p>真正加载配置文件的方法：<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">load</span><span class="hljs-params">(String location, String name, Profile profile,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">		DocumentFilterFactory filterFactory, DocumentConsumer consumer)</span> </span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span> (!StringUtils.hasText(name)) &#123;</span><br><span class="line">		<span class="hljs-keyword">for</span> (PropertySourceLoader loader : <span class="hljs-keyword">this</span>.propertySourceLoaders) &#123;</span><br><span class="line">			<span class="hljs-keyword">if</span> (canLoadFileExtension(loader, location)) &#123;</span><br><span class="line">				load(loader, location, profile,</span><br><span class="line">						filterFactory.getDocumentFilter(profile), consumer);</span><br><span class="line">				<span class="hljs-keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	Set&lt;String&gt; processed = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">	<span class="hljs-keyword">for</span> (PropertySourceLoader loader : <span class="hljs-keyword">this</span>.propertySourceLoaders) &#123;</span><br><span class="line">		<span class="hljs-keyword">for</span> (String fileExtension : loader.getFileExtensions()) &#123;</span><br><span class="line">			<span class="hljs-keyword">if</span> (processed.add(fileExtension)) &#123;</span><br><span class="line">				loadForFileExtension(loader, location + name, <span class="hljs-string">"."</span> + fileExtension,</span><br><span class="line">						profile, filterFactory, consumer);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>loader.getFileExtensions():获取所有支持的文件后缀,loader初始化如下：<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Loader(ConfigurableEnvironment environment, ResourceLoader resourceLoader) &#123;</span><br><span class="line">	<span class="hljs-keyword">this</span>.propertySourceLoaders = SpringFactoriesLoader.loadFactories(</span><br><span class="line">			PropertySourceLoader.class, getClass().getClassLoader());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过加载jar:spring-boot-2.1.4.RELEASE.jar:META-INF/spring.factories文件下对应内容：<br><figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># PropertySource Loaders</span><br><span class="line">org.springframework.boot.env.PropertySourceLoader=\</span><br><span class="line">org.springframework.boot.env.PropertiesPropertySourceLoader,\</span><br><span class="line">org.springframework.boot.env.YamlPropertySourceLoader</span><br></pre></td></tr></table></figure></p>
+<p>从这里我们可以看到，通过PropertiesPropertySourceLoader和YamlPropertySourceLoader<br>加载配置文件，具体源码没有细看了，有兴趣自行阅读吧</p>
+<p>加载完配置文件，调用方法：addLoadedPropertySources()</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>至此，springboot加载properties和yml的入口就分析到这里了，细节上肯定不能面面俱到，但是入口知道了，后面就好分析了</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.png" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/04/24/springboot-2/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">springboot(四)——@EnableConfigurationProperties是如何起作用的你知道吗</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/24/springboot/">
+                <span class="level-item">springboot(二)——springboot自动配置解析</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="张珮磊想静静">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        张珮磊想静静
+                    </p>
+                    
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>北京·朝阳</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        6
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        3
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/stonezpl/" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/stonezpl/">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="微博" href="https://weibo.com/zplxjj/">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://weibo.com/zplxjj/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">微博</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">weibo.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/linux/">
+            <span class="level-start">
+                <span class="level-item">linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/redis/">
+            <span class="level-start">
+                <span class="level-item">redis</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/springboot/">
+            <span class="level-start">
+                <span class="level-item">springboot</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-24T14:40:58.000Z">2019-04-24</time></div>
+                    <a href="/2019/04/24/springboot-2/" class="has-link-black-ter is-size-6">springboot(四)——@EnableConfigurationProperties是如何起作用的你知道吗</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/springboot/">springboot</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-24T14:39:17.000Z">2019-04-24</time></div>
+                    <a href="/2019/04/24/springboot-1/" class="has-link-black-ter is-size-6">springboot(三)——application.properties和application.yml是何时解析的</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/springboot/">springboot</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-24T14:32:51.000Z">2019-04-24</time></div>
+                    <a href="/2019/04/24/springboot/" class="has-link-black-ter is-size-6">springboot(二)——springboot自动配置解析</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/springboot/">springboot</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-16T14:46:15.000Z">2019-04-16</time></div>
+                    <a href="/2019/04/16/springboot/" class="has-link-black-ter is-size-6">springboot(一)——搭建属于自己的springboot项目</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/springboot/">springboot</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-03T08:32:01.000Z">2019-04-03</time></div>
+                    <a href="/2019/04/03/redis/" class="has-link-black-ter is-size-6">redis分布式锁——简单实现</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/redis/">redis</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-24T14:40:58.000Z">2019-04-24</time></div>
+                    <a href="/2019/04/24/springboot-2/" class="has-link-black-ter is-size-6">springboot(四)——@EnableConfigurationProperties是如何起作用的你知道吗</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/springboot/">springboot</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-24T14:39:17.000Z">2019-04-24</time></div>
+                    <a href="/2019/04/24/springboot-1/" class="has-link-black-ter is-size-6">springboot(三)——application.properties和application.yml是何时解析的</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/springboot/">springboot</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-24T14:32:51.000Z">2019-04-24</time></div>
+                    <a href="/2019/04/24/springboot/" class="has-link-black-ter is-size-6">springboot(二)——springboot自动配置解析</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/springboot/">springboot</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-16T14:46:15.000Z">2019-04-16</time></div>
+                    <a href="/2019/04/16/springboot/" class="has-link-black-ter is-size-6">springboot(一)——搭建属于自己的springboot项目</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/springboot/">springboot</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-03T08:32:01.000Z">2019-04-03</time></div>
+                    <a href="/2019/04/03/redis/" class="has-link-black-ter is-size-6">redis分布式锁——简单实现</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/redis/">redis</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="springboot(三)——application.properties和application.yml是何时解析的" height="28">
+                
+                </a>
+                <p class="is-size-7">
+	       &copy; 2019 张珮磊&copy;
+               <!-- 首先引入统计用的js，然后编写相应的统计代码 -->
+               <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+               访问量<span id="busuanzi_value_site_pv"></span>次  <i class="fa fa-user-md"></i>  访客数<span id="busuanzi_value_site_uv"></span>人
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="weibo" href="https://weibo.com/zplxjj/">
+                        
+                        <i class="fab fa-weibo"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/stonezpl">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

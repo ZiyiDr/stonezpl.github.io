@@ -2,22 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>张珮磊想静静</title>
+<title>springboot(二)——springboot自动配置解析 - 张珮磊想静静</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="互联网从业人员,技术有它的无奈,但是总幻想可以创造出一点小美好">
-<meta property="og:type" content="website">
-<meta property="og:title" content="张珮磊想静静">
-<meta property="og:url" content="https://stonezpl.github.io/index.html">
+    <meta name="description" content="前言用过springboot的同学肯定很熟悉，它其中有个重要的特性，就是自动配置(平时习惯的一些设置的配置作为默认配置)。springboot提倡无XML配置文件的理念，使用springboot生成的应用完全不会生成任何配置代码与XML配置文件。下面先看一个springboot集成mybatis的例子。第一步： 引入pom文件12345678910&amp;lt;dependency&amp;gt;    &amp;lt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springboot(二)——springboot自动配置解析">
+<meta property="og:url" content="https://stonezpl.github.io/2019/04/24/springboot/index.html">
 <meta property="og:site_name" content="张珮磊想静静">
-<meta property="og:description" content="互联网从业人员,技术有它的无奈,但是总幻想可以创造出一点小美好">
+<meta property="og:description" content="前言用过springboot的同学肯定很熟悉，它其中有个重要的特性，就是自动配置(平时习惯的一些设置的配置作为默认配置)。springboot提倡无XML配置文件的理念，使用springboot生成的应用完全不会生成任何配置代码与XML配置文件。下面先看一个springboot集成mybatis的例子。第一步： 引入pom文件12345678910&amp;lt;dependency&amp;gt;    &amp;lt">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://stonezpl.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-04-24T14:43:44.498Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="张珮磊想静静">
-<meta name="twitter:description" content="互联网从业人员,技术有它的无奈,但是总幻想可以创造出一点小美好">
+<meta name="twitter:title" content="springboot(二)——springboot自动配置解析">
+<meta name="twitter:description" content="前言用过springboot的同学肯定很熟悉，它其中有个重要的特性，就是自动配置(平时习惯的一些设置的配置作为默认配置)。springboot提倡无XML配置文件的理念，使用springboot生成的应用完全不会生成任何配置代码与XML配置文件。下面先看一个springboot集成mybatis的例子。第一步： 引入pom文件12345678910&amp;lt;dependency&amp;gt;    &amp;lt">
 <meta name="twitter:image" content="https://stonezpl.github.io/images/og_image.png">
 
 
@@ -92,7 +93,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="张珮磊想静静" height="28">
+                <img src="/images/logo.svg" alt="springboot(二)——springboot自动配置解析" height="28">
             
             </a>
         </div>
@@ -100,7 +101,7 @@
             
             <div class="navbar-start">
                 
-                <a class="navbar-item is-active" href="/">主页</a>
+                <a class="navbar-item" href="/">主页</a>
                 
                 <a class="navbar-item" href="/archives">归档</a>
                 
@@ -137,116 +138,7 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-04-24T14:40:58.000Z">2019-04-24</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/springboot/">springboot</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 分钟 读完 (大约 806 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/04/24/springboot-2/">springboot(四)——@EnableConfigurationProperties是如何起作用的你知道吗</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>用springboot开发的过程中，我们会用到<strong>@ConfigurationProperties</strong>注解，主要是用来把properties或者yml配置文件转化为bean来使用的，而<strong>@EnableConfigurationProperties</strong>注解的作用是@ConfigurationProperties注解生效。<br>如果只配置@ConfigurationProperties注解，在IOC容器中是获取不到properties配置文件转化的bean的，当然在@ConfigurationProperties加入注解的类上加@Component也可以使交于springboot管理。</p>
-<h2 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h2>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/04/24/springboot-2/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-04-24T14:39:17.000Z">2019-04-24</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/springboot/">springboot</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    8 分钟 读完 (大约 1177 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/04/24/springboot-1/">springboot(三)——application.properties和application.yml是何时解析的</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>用过的springboot的小伙伴都知道springboot不需要再像springmvc引入那么多的配置文件，只需要加入application.properties或者application.yml即可，比如在上一篇文章讲到数据库的配置，只需要在文件引入如下的配置即可：<br><figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring.datasource.url=jdbc:mysql://127.0.0.1:3306/zplxjj?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=GMT%2B8</span><br><span class="line">spring.datasource.username=root</span><br><span class="line">spring.datasource.password=@ZPLxjj12345</span><br><span class="line">spring.datasource.driver-class-name=com.mysql.jdbc.Driver</span><br></pre></td></tr></table></figure></p>
-<p>下面简单介绍下springboot在启动的时候是在何时读取的properties和yml文件的内容的<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/04/24/springboot-1/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-content article ">
         
@@ -271,21 +163,24 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/04/24/springboot/">springboot(二)——springboot自动配置解析</a>
+                springboot(二)——springboot自动配置解析
             
         </h1>
         <div class="content">
             <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>用过springboot的同学肯定很熟悉，它其中有个重要的特性，就是自动配置(平时习惯的一些设置的配置作为默认配置)。springboot提倡无XML配置文件的理念，使用springboot生成的应用完全不会生成任何配置代码与XML配置文件。下面先看一个springboot集成mybatis的例子。<br><strong>第一步：</strong> 引入pom文件<br><figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.0.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>mysql<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mysql-connector-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>5.1.47<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p><strong>第二步：</strong> 因为我使用的xml配置文件去使用mybatis，在application.properties文件加入如下配置：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#指定mapper文件位置</span><br><span class="line">mybatis.mapper-locations=classpath:mapper/*.xml</span><br><span class="line"></span><br><span class="line">#数据源信息</span><br><span class="line">spring.datasource.url=jdbc:mysql://127.0.0.1:3306/zplxjj?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=GMT%2B8</span><br><span class="line">spring.datasource.username=root</span><br><span class="line">spring.datasource.password=123456</span><br><span class="line">spring.datasource.driver-class-name=com.mysql.jdbc.Driver</span><br></pre></td></tr></table></figure></p>
+<p><strong>第三步：</strong> 加入实体类、dao、mapper文件<br><img src="/2019/04/24/springboot/springboot011.png" alt><br><strong>第四步：</strong>启动类上面加入注解<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@SpringBootApplication</span></span><br><span class="line"><span class="hljs-meta">@MapperScan</span>(<span class="hljs-string">"com.stone.zplxjj.dao"</span>)</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Application</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(Application.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>第五步：</strong>至此，配置完成，只需要写个单侧，springboot已经完美集成mybatis<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@RunWith</span>(SpringRunner.class)</span><br><span class="line"><span class="hljs-meta">@SpringBootTest</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ApplicationTests</span> </span>&#123;</span><br><span class="line">	<span class="hljs-meta">@Autowired</span></span><br><span class="line">	UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-meta">@Test</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testMybatis</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(userMapper.selectByPrimaryKey(<span class="hljs-number">1L</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="EnableAutoConfiguration"><a href="#EnableAutoConfiguration" class="headerlink" title="@EnableAutoConfiguration"></a>@EnableAutoConfiguration</h2><p>通过上面的例子，我们发现集成mybatis特别简单，那些繁琐的类的注入都没有写，只需要加入数据库的一些配置即可，那这其中@EnableAutoConfiguration功不可没。@EnableAutoConfiguration 注解已经在@SpringBootApplication里面了<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="hljs-meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="hljs-meta">@Documented</span></span><br><span class="line"><span class="hljs-meta">@Inherited</span></span><br><span class="line"><span class="hljs-meta">@SpringBootConfiguration</span></span><br><span class="line"><span class="hljs-meta">@EnableAutoConfiguration</span></span><br><span class="line"><span class="hljs-meta">@ComponentScan</span>(</span><br><span class="line">    excludeFilters = &#123;<span class="hljs-meta">@Filter</span>(</span><br><span class="line">    type = FilterType.CUSTOM,</span><br><span class="line">    classes = &#123;TypeExcludeFilter.class&#125;</span><br><span class="line">), <span class="hljs-meta">@Filter</span>(</span><br><span class="line">    type = FilterType.CUSTOM,</span><br><span class="line">    classes = &#123;AutoConfigurationExcludeFilter.class&#125;</span><br><span class="line">)&#125;</span><br><span class="line">)</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> SpringBootApplication &#123;</span><br><span class="line">    <span class="hljs-meta">@AliasFor</span>(</span><br><span class="line">        annotation = EnableAutoConfiguration.class</span><br><span class="line">    )</span><br><span class="line">    Class&lt;?&gt;[] exclude() <span class="hljs-keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@AliasFor</span>(</span><br><span class="line">        annotation = EnableAutoConfiguration.class</span><br><span class="line">    )</span><br><span class="line">    String[] excludeName() <span class="hljs-keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@AliasFor</span>(</span><br><span class="line">        annotation = ComponentScan.class,</span><br><span class="line">        attribute = <span class="hljs-string">"basePackages"</span></span><br><span class="line">    )</span><br><span class="line">    String[] scanBasePackages() <span class="hljs-keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@AliasFor</span>(</span><br><span class="line">        annotation = ComponentScan.class,</span><br><span class="line">        attribute = <span class="hljs-string">"basePackageClasses"</span></span><br><span class="line">    )</span><br><span class="line">    Class&lt;?&gt;[] scanBasePackageClasses() <span class="hljs-keyword">default</span> &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们看到@EnableAutoConfiguration结构如下：<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="hljs-meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="hljs-meta">@Documented</span></span><br><span class="line"><span class="hljs-meta">@Inherited</span></span><br><span class="line"><span class="hljs-meta">@AutoConfigurationPackage</span></span><br><span class="line"><span class="hljs-meta">@Import</span>(&#123;AutoConfigurationImportSelector.class&#125;)</span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> EnableAutoConfiguration &#123;</span><br><span class="line">    String ENABLED_OVERRIDE_PROPERTY = <span class="hljs-string">"spring.boot.enableautoconfiguration"</span>;</span><br><span class="line"></span><br><span class="line">    Class&lt;?&gt;[] exclude() <span class="hljs-keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    String[] excludeName() <span class="hljs-keyword">default</span> &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这其中起作用的一个重要注解@Import，这个Spring提供的一个注解，可以导入配置类或者Bean到当前类中，我们进入到AutoConfigurationImportSelector类中查看，方法太长，截取核心的两个方法：<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> String[] selectImports(AnnotationMetadata annotationMetadata) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.isEnabled(annotationMetadata)) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> NO_IMPORTS;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        AutoConfigurationMetadata autoConfigurationMetadata = AutoConfigurationMetadataLoader.loadMetadata(<span class="hljs-keyword">this</span>.beanClassLoader);</span><br><span class="line">        AutoConfigurationImportSelector.AutoConfigurationEntry autoConfigurationEntry = <span class="hljs-keyword">this</span>.getAutoConfigurationEntry(autoConfigurationMetadata, annotationMetadata);</span><br><span class="line">        <span class="hljs-keyword">return</span> StringUtils.toStringArray(autoConfigurationEntry.getConfigurations());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">protected</span> AutoConfigurationImportSelector.<span class="hljs-function">AutoConfigurationEntry <span class="hljs-title">getAutoConfigurationEntry</span><span class="hljs-params">(AutoConfigurationMetadata autoConfigurationMetadata, AnnotationMetadata annotationMetadata)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.isEnabled(annotationMetadata)) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> EMPTY_ENTRY;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        AnnotationAttributes attributes = <span class="hljs-keyword">this</span>.getAttributes(annotationMetadata);</span><br><span class="line">        List&lt;String&gt; configurations = <span class="hljs-keyword">this</span>.getCandidateConfigurations(annotationMetadata, attributes);</span><br><span class="line">        configurations = <span class="hljs-keyword">this</span>.removeDuplicates(configurations);</span><br><span class="line">        Set&lt;String&gt; exclusions = <span class="hljs-keyword">this</span>.getExclusions(annotationMetadata, attributes);</span><br><span class="line">        <span class="hljs-keyword">this</span>.checkExcludedClasses(configurations, exclusions);</span><br><span class="line">        configurations.removeAll(exclusions);</span><br><span class="line">        configurations = <span class="hljs-keyword">this</span>.filter(configurations, autoConfigurationMetadata);</span><br><span class="line">        <span class="hljs-keyword">this</span>.fireAutoConfigurationImportEvents(configurations, exclusions);</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> AutoConfigurationImportSelector.AutoConfigurationEntry(configurations, exclusions);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过项目启动后，打上注解，可以看到MybatisAutoConfiguration引入了进来<br><img src="/2019/04/24/springboot/springboot012.png" alt><br>而MybatisAutoConfiguration能引入进来，其实是在mybatis-spring-boot-autoconfigure-2.0.1.jar包里面的spring.factories指定的,通过调用SpringFactoriesLoader.loadFactoryNames()来扫描加载含有META-INF/spring.factories文件的jar包，从而标识哪些自动配置的类<br><figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Auto Configure</span><br><span class="line">org.springframework.boot.autoconfigure.EnableAutoConfiguration=\</span><br><span class="line">org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration</span><br></pre></td></tr></table></figure></p>
+<h2 id="Conditional"><a href="#Conditional" class="headerlink" title="@Conditional"></a>@Conditional</h2><p>@Conditional 的作用，可以根据条件去加载特定的bean，原理这边不做探讨，springboot基于此实现了几个注解，比较方便的实现条件加载类<br><strong>@ConditionalOnBean：</strong>Spring容器中是否存在对应的实例<br><strong>@ConditionalOnMissingBean：</strong>Spring容器中是否缺少对应的实例<br>通过查看MybatisAutoConfiguration中的SqlSessionFactory的写法<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@Bean</span></span><br><span class="line"><span class="hljs-meta">@ConditionalOnMissingBean</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> SqlSessionFactory <span class="hljs-title">sqlSessionFactory</span><span class="hljs-params">(DataSource dataSource)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    SqlSessionFactoryBean factory = <span class="hljs-keyword">new</span> SqlSessionFactoryBean();</span><br><span class="line">    factory.setDataSource(dataSource);</span><br><span class="line">    factory.setVfs(SpringBootVFS.class);</span><br><span class="line">    <span class="hljs-keyword">if</span> (StringUtils.hasText(<span class="hljs-keyword">this</span>.properties.getConfigLocation())) &#123;</span><br><span class="line">        factory.setConfigLocation(<span class="hljs-keyword">this</span>.resourceLoader.getResource(<span class="hljs-keyword">this</span>.properties.getConfigLocation()));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">this</span>.applyConfiguration(factory);</span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.properties.getConfigurationProperties() != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">        factory.setConfigurationProperties(<span class="hljs-keyword">this</span>.properties.getConfigurationProperties());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (!ObjectUtils.isEmpty(<span class="hljs-keyword">this</span>.interceptors)) &#123;</span><br><span class="line">        factory.setPlugins(<span class="hljs-keyword">this</span>.interceptors);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.databaseIdProvider != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">        factory.setDatabaseIdProvider(<span class="hljs-keyword">this</span>.databaseIdProvider);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (StringUtils.hasLength(<span class="hljs-keyword">this</span>.properties.getTypeAliasesPackage())) &#123;</span><br><span class="line">        factory.setTypeAliasesPackage(<span class="hljs-keyword">this</span>.properties.getTypeAliasesPackage());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.properties.getTypeAliasesSuperType() != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">        factory.setTypeAliasesSuperType(<span class="hljs-keyword">this</span>.properties.getTypeAliasesSuperType());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (StringUtils.hasLength(<span class="hljs-keyword">this</span>.properties.getTypeHandlersPackage())) &#123;</span><br><span class="line">        factory.setTypeHandlersPackage(<span class="hljs-keyword">this</span>.properties.getTypeHandlersPackage());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (!ObjectUtils.isEmpty(<span class="hljs-keyword">this</span>.properties.resolveMapperLocations())) &#123;</span><br><span class="line">        factory.setMapperLocations(<span class="hljs-keyword">this</span>.properties.resolveMapperLocations());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> factory.getObject();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>通过上面分析mybatis如何集成springboot，知道了springboot入口在哪里以及如何实现的自动配置，这里只是简单的做了介绍，其中的一些源码和细节就没有分析了，我相信，入口知道了，接下来就好抠细节了。</p>
+
         </div>
         
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/04/24/springboot/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
         
         
     </div>
@@ -293,177 +188,57 @@
 
 
 
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-04-16T14:46:15.000Z">2019-04-16</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/springboot/">springboot</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 522 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
             
-                <a class="has-link-black-ter" href="/2019/04/16/springboot/">springboot(一)——搭建属于自己的springboot项目</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="idea使用spring-Initalizr-快速构建spring-boot"><a href="#idea使用spring-Initalizr-快速构建spring-boot" class="headerlink" title="idea使用spring Initalizr 快速构建spring boot"></a>idea使用spring Initalizr 快速构建spring boot</h2><ol>
-<li>点击新建项目,选择如图所示<img src="/2019/04/16/springboot/springboot001.png" alt></li>
-<li>点击next后<img src="/2019/04/16/springboot/springboot002.png" alt></li></ol>
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.png" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.png" alt="微信"></div>
+</a>
+
+                
         </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/04/16/springboot/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
     </div>
 </div>
 
 
 
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-04-03T08:32:01.000Z">2019-04-03</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/redis/">redis</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 分钟 读完 (大约 754 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/04/03/redis/">redis分布式锁——简单实现</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近项目当中需要处理分布式系统中的并发问题，自然地想到了引入分布式锁，本文旨在讲述用redis简单的实现分布式锁，对于复杂的类似于redis集群问题、为什么不用zk等，自己也在学习，希望可以以后有机会分享</p>
-<h2 id="分布式锁的可靠性保证"><a href="#分布式锁的可靠性保证" class="headerlink" title="分布式锁的可靠性保证"></a>分布式锁的可靠性保证</h2><ol>
-<li>在过期时间内，只有一个客户端持有锁</li>
-<li>在客户端持有锁期间短暂崩溃或者redis发生短暂崩溃时，不会有死锁状态</li>
-<li>加锁和解锁必须是同一客户端，加锁和解锁必须是同一个客户端</li>
-</ol>
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/04/24/springboot-1/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">springboot(三)——application.properties和application.yml是何时解析的</span>
+            </a>
         </div>
         
         
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/04/03/redis/#more">阅读更多</a>
-                </div>
-            </div>
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/16/springboot/">
+                <span class="level-item">springboot(一)——搭建属于自己的springboot项目</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        
         
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-04-01T12:48:19.000Z">2019-04-01</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/linux/">linux</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1 分钟 读完 (大约 163 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/04/01/linux/">linux 常用命令(持续更新)</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="查看磁盘空间大小"><a href="#查看磁盘空间大小" class="headerlink" title="查看磁盘空间大小"></a>查看磁盘空间大小</h1><ol>
-<li>查看磁盘空间大小: df -h<img src="/2019/04/01/linux/linux001.png" alt></li>
-<li>查看指定目录大小: du -sh &lt;目录名&gt;<img src="/2019/04/01/linux/linux002.png" alt></li></ol>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/04/01/linux/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
 
 
 
@@ -895,7 +670,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="张珮磊想静静" height="28">
+                    <img src="/images/logo.svg" alt="springboot(二)——springboot自动配置解析" height="28">
                 
                 </a>
                 <p class="is-size-7">
