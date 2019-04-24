@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://stonezpl.github.io/about/index.html</loc>
+    
+    <lastmod>2019-04-24T14:59:17.513Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://stonezpl.github.io/2019/04/24/springboot-2/</loc>
     
     <lastmod>2019-04-24T14:44:46.774Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://stonezpl.github.io/2019/04/24/springboot/</loc>
     
     <lastmod>2019-04-24T14:43:44.498Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://stonezpl.github.io/about/index.html</loc>
-    
-    <lastmod>2019-04-24T14:28:21.768Z</lastmod>
     
   </url>
   
