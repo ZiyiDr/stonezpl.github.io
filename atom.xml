@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://stonezpl.github.io/"/>
+  <link href="https://www.zplxjj.com/"/>
   <updated>2019-04-26T09:14:12.452Z</updated>
-  <id>https://stonezpl.github.io/</id>
+  <id>https://www.zplxjj.com/</id>
   
   <author>
     <name>张珮磊</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>与go邂逅(二)——基本程序结构</title>
-    <link href="https://stonezpl.github.io/2019/04/26/%E4%B8%8Ego%E9%82%82%E9%80%85/"/>
-    <id>https://stonezpl.github.io/2019/04/26/与go邂逅/</id>
+    <link href="https://www.zplxjj.com/2019/04/26/%E4%B8%8Ego%E9%82%82%E9%80%85/"/>
+    <id>https://www.zplxjj.com/2019/04/26/与go邂逅/</id>
     <published>2019-04-26T09:11:06.000Z</published>
     <updated>2019-04-26T09:14:12.452Z</updated>
     
@@ -31,15 +31,15 @@
     
     </summary>
     
-      <category term="go" scheme="https://stonezpl.github.io/categories/go/"/>
+      <category term="go" scheme="https://www.zplxjj.com/categories/go/"/>
     
     
   </entry>
   
   <entry>
     <title>与go邂逅(一)——go环境搭建和Helloworld(开发工具：GOLAND)</title>
-    <link href="https://stonezpl.github.io/2019/04/25/%E4%B8%8Ego%E9%82%82%E9%80%85/"/>
-    <id>https://stonezpl.github.io/2019/04/25/与go邂逅/</id>
+    <link href="https://www.zplxjj.com/2019/04/25/%E4%B8%8Ego%E9%82%82%E9%80%85/"/>
+    <id>https://www.zplxjj.com/2019/04/25/与go邂逅/</id>
     <published>2019-04-25T07:19:17.000Z</published>
     <updated>2019-04-25T07:24:55.888Z</updated>
     
@@ -55,15 +55,15 @@
     
     </summary>
     
-      <category term="go" scheme="https://stonezpl.github.io/categories/go/"/>
+      <category term="go" scheme="https://www.zplxjj.com/categories/go/"/>
     
     
   </entry>
   
   <entry>
     <title>springboot(四)——@EnableConfigurationProperties是如何起作用的你知道吗</title>
-    <link href="https://stonezpl.github.io/2019/04/24/springboot-2/"/>
-    <id>https://stonezpl.github.io/2019/04/24/springboot-2/</id>
+    <link href="https://www.zplxjj.com/2019/04/24/springboot-2/"/>
+    <id>https://www.zplxjj.com/2019/04/24/springboot-2/</id>
     <published>2019-04-24T14:40:58.000Z</published>
     <updated>2019-04-24T16:40:19.801Z</updated>
     
@@ -76,15 +76,15 @@
     
     </summary>
     
-      <category term="springboot" scheme="https://stonezpl.github.io/categories/springboot/"/>
+      <category term="springboot" scheme="https://www.zplxjj.com/categories/springboot/"/>
     
     
   </entry>
   
   <entry>
     <title>springboot(三)——application.properties和application.yml是何时解析的</title>
-    <link href="https://stonezpl.github.io/2019/04/24/springboot-1/"/>
-    <id>https://stonezpl.github.io/2019/04/24/springboot-1/</id>
+    <link href="https://www.zplxjj.com/2019/04/24/springboot-1/"/>
+    <id>https://www.zplxjj.com/2019/04/24/springboot-1/</id>
     <published>2019-04-24T14:39:17.000Z</published>
     <updated>2019-04-24T16:40:51.246Z</updated>
     
@@ -97,15 +97,15 @@
     
     </summary>
     
-      <category term="springboot" scheme="https://stonezpl.github.io/categories/springboot/"/>
+      <category term="springboot" scheme="https://www.zplxjj.com/categories/springboot/"/>
     
     
   </entry>
   
   <entry>
     <title>springboot(二)——springboot自动配置解析</title>
-    <link href="https://stonezpl.github.io/2019/04/24/springboot/"/>
-    <id>https://stonezpl.github.io/2019/04/24/springboot/</id>
+    <link href="https://www.zplxjj.com/2019/04/24/springboot/"/>
+    <id>https://www.zplxjj.com/2019/04/24/springboot/</id>
     <published>2019-04-24T14:32:51.000Z</published>
     <updated>2019-04-24T16:40:19.854Z</updated>
     
@@ -117,15 +117,15 @@
     
     </summary>
     
-      <category term="springboot" scheme="https://stonezpl.github.io/categories/springboot/"/>
+      <category term="springboot" scheme="https://www.zplxjj.com/categories/springboot/"/>
     
     
   </entry>
   
   <entry>
     <title>springboot(一)——搭建属于自己的springboot项目</title>
-    <link href="https://stonezpl.github.io/2019/04/16/springboot/"/>
-    <id>https://stonezpl.github.io/2019/04/16/springboot/</id>
+    <link href="https://www.zplxjj.com/2019/04/16/springboot/"/>
+    <id>https://www.zplxjj.com/2019/04/16/springboot/</id>
     <published>2019-04-16T14:46:15.000Z</published>
     <updated>2019-04-26T09:26:39.949Z</updated>
     
@@ -138,15 +138,15 @@
     
     </summary>
     
-      <category term="springboot" scheme="https://stonezpl.github.io/categories/springboot/"/>
+      <category term="springboot" scheme="https://www.zplxjj.com/categories/springboot/"/>
     
     
   </entry>
   
   <entry>
     <title>redis分布式锁——简单实现</title>
-    <link href="https://stonezpl.github.io/2019/04/03/redis/"/>
-    <id>https://stonezpl.github.io/2019/04/03/redis/</id>
+    <link href="https://www.zplxjj.com/2019/04/03/redis/"/>
+    <id>https://www.zplxjj.com/2019/04/03/redis/</id>
     <published>2019-04-03T08:32:01.000Z</published>
     <updated>2019-04-26T09:26:53.787Z</updated>
     
@@ -158,15 +158,15 @@
     
     </summary>
     
-      <category term="redis" scheme="https://stonezpl.github.io/categories/redis/"/>
+      <category term="redis" scheme="https://www.zplxjj.com/categories/redis/"/>
     
     
   </entry>
   
   <entry>
     <title>linux 常用命令(持续更新)</title>
-    <link href="https://stonezpl.github.io/2019/04/01/linux/"/>
-    <id>https://stonezpl.github.io/2019/04/01/linux/</id>
+    <link href="https://www.zplxjj.com/2019/04/01/linux/"/>
+    <id>https://www.zplxjj.com/2019/04/01/linux/</id>
     <published>2019-04-01T12:48:19.000Z</published>
     <updated>2019-04-26T09:27:06.083Z</updated>
     
@@ -179,7 +179,7 @@
     
     </summary>
     
-      <category term="linux" scheme="https://stonezpl.github.io/categories/linux/"/>
+      <category term="linux" scheme="https://www.zplxjj.com/categories/linux/"/>
     
     
   </entry>
