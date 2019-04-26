@@ -2,23 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>与go邂逅(二)——go当中的基本程序结构 - 张珮磊想静静</title>
+<title>与go邂逅(二)——基本程序结构 - 张珮磊想静静</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="前言学习一门语言的时候，难免从最简单的程序结构学起，这些东西在掌握了一门别的开发语言的情况(如大名鼎鼎的java)，就会显得如鱼得水了，下面会把我学习一些简单例子分享出来。 基本程序结构快速为一些变量赋值1234567891011const (	NUM1 = 1 + iota	NUM2	NUM3	NUM4)//输出结果：1，2，4，8func TestPrint(t *testing.T) &amp;#1">
+    <meta name="description" content="前言学习一门语言的时候，难免从最简单的程序结构学起，这些东西在掌握了一门别的开发语言的情况(如大名鼎鼎的java)，就会显得如鱼得水了，下面会把我学习一些简单例子分享出来。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="与go邂逅(二)——go当中的基本程序结构">
+<meta property="og:title" content="与go邂逅(二)——基本程序结构">
 <meta property="og:url" content="https://stonezpl.github.io/2019/04/26/与go邂逅/index.html">
 <meta property="og:site_name" content="张珮磊想静静">
-<meta property="og:description" content="前言学习一门语言的时候，难免从最简单的程序结构学起，这些东西在掌握了一门别的开发语言的情况(如大名鼎鼎的java)，就会显得如鱼得水了，下面会把我学习一些简单例子分享出来。 基本程序结构快速为一些变量赋值1234567891011const (	NUM1 = 1 + iota	NUM2	NUM3	NUM4)//输出结果：1，2，4，8func TestPrint(t *testing.T) &amp;#1">
+<meta property="og:description" content="前言学习一门语言的时候，难免从最简单的程序结构学起，这些东西在掌握了一门别的开发语言的情况(如大名鼎鼎的java)，就会显得如鱼得水了，下面会把我学习一些简单例子分享出来。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://stonezpl.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-04-26T09:12:04.075Z">
+<meta property="og:updated_time" content="2019-04-26T09:14:12.452Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="与go邂逅(二)——go当中的基本程序结构">
-<meta name="twitter:description" content="前言学习一门语言的时候，难免从最简单的程序结构学起，这些东西在掌握了一门别的开发语言的情况(如大名鼎鼎的java)，就会显得如鱼得水了，下面会把我学习一些简单例子分享出来。 基本程序结构快速为一些变量赋值1234567891011const (	NUM1 = 1 + iota	NUM2	NUM3	NUM4)//输出结果：1，2，4，8func TestPrint(t *testing.T) &amp;#1">
+<meta name="twitter:title" content="与go邂逅(二)——基本程序结构">
+<meta name="twitter:description" content="前言学习一门语言的时候，难免从最简单的程序结构学起，这些东西在掌握了一门别的开发语言的情况(如大名鼎鼎的java)，就会显得如鱼得水了，下面会把我学习一些简单例子分享出来。">
 <meta name="twitter:image" content="https://stonezpl.github.io/images/og_image.png">
 
 
@@ -93,7 +93,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="与go邂逅(二)——go当中的基本程序结构" height="28">
+                <img src="/images/logo.svg" alt="与go邂逅(二)——基本程序结构" height="28">
             
             </a>
         </div>
@@ -154,7 +154,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 584 个字)
+                    4 分钟 读完 (大约 585 个字)
                 </span>
                 
                 
@@ -163,11 +163,11 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                与go邂逅(二)——go当中的基本程序结构
+                与go邂逅(二)——基本程序结构
             
         </h1>
         <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>学习一门语言的时候，难免从最简单的程序结构学起，这些东西在掌握了一门别的开发语言的情况(如大名鼎鼎的java)，就会显得如鱼得水了，下面会把我学习一些简单例子分享出来。</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>学习一门语言的时候，难免从最简单的程序结构学起，这些东西在掌握了一门别的开发语言的情况(如大名鼎鼎的java)，就会显得如鱼得水了，下面会把我学习一些简单例子分享出来。<br><a id="more"></a></p>
 <h2 id="基本程序结构"><a href="#基本程序结构" class="headerlink" title="基本程序结构"></a>基本程序结构</h2><p>快速为一些变量赋值<br><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> (</span><br><span class="line">	NUM1 = <span class="hljs-number">1</span> + <span class="hljs-literal">iota</span></span><br><span class="line">	NUM2</span><br><span class="line">	NUM3</span><br><span class="line">	NUM4</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//输出结果：1，2，4，8</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestPrint</span><span class="hljs-params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	t.Log(NUM1, NUM2, NUM3, NUM4)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>快速的实现一些数值交换<br><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//数值交换</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestExchange</span><span class="hljs-params">(t *testing.T)</span></span> &#123;</span><br><span class="line"><span class="hljs-comment">//也可以这样定义变量：var aa int = 1</span></span><br><span class="line">	a := <span class="hljs-number">1</span></span><br><span class="line">	b := <span class="hljs-number">2</span></span><br><span class="line">	t.Log(a, b)</span><br><span class="line">    <span class="hljs-comment">//交换数值</span></span><br><span class="line">	b, a = a, b</span><br><span class="line">	t.Log(a, b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>类型转换<br><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//给类型命名</span></span><br><span class="line"><span class="hljs-keyword">type</span> typeInt <span class="hljs-keyword">int64</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestInt</span><span class="hljs-params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	<span class="hljs-keyword">var</span> a <span class="hljs-keyword">int64</span> = <span class="hljs-number">2</span></span><br><span class="line">	<span class="hljs-keyword">var</span> b <span class="hljs-keyword">int32</span> = <span class="hljs-number">3</span></span><br><span class="line">	<span class="hljs-comment">//类型不可转</span></span><br><span class="line">	<span class="hljs-comment">//a = b</span></span><br><span class="line">	<span class="hljs-keyword">var</span> c = typeInt(<span class="hljs-number">3</span>)</span><br><span class="line"></span><br><span class="line">	t.Log(a, b, c)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -433,7 +433,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-26T09:11:06.000Z">2019-04-26</time></div>
-                    <a href="/2019/04/26/与go邂逅/" class="has-link-black-ter is-size-6">与go邂逅(二)——go当中的基本程序结构</a>
+                    <a href="/2019/04/26/与go邂逅/" class="has-link-black-ter is-size-6">与go邂逅(二)——基本程序结构</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/go/">go</a>
                     </p>
@@ -557,7 +557,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-26T09:11:06.000Z">2019-04-26</time></div>
-                    <a href="/2019/04/26/与go邂逅/" class="has-link-black-ter is-size-6">与go邂逅(二)——go当中的基本程序结构</a>
+                    <a href="/2019/04/26/与go邂逅/" class="has-link-black-ter is-size-6">与go邂逅(二)——基本程序结构</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/go/">go</a>
                     </p>
@@ -670,7 +670,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="与go邂逅(二)——go当中的基本程序结构" height="28">
+                    <img src="/images/logo.svg" alt="与go邂逅(二)——基本程序结构" height="28">
                 
                 </a>
                 <p class="is-size-7">
