@@ -173,23 +173,23 @@
                 与go邂逅(二)——基本程序结构
             
         </h1>
-            <div class="article-meta">
-                <!-- 原创转载开始 -->
-                
-                    <span style="float: left;padding: 3px 5px 3px 5px;margin-right: 15px;border-radius: .25em;background-color:#5cb85c;line-height:1;color:#fff;font-size: 12px;margin-top:5px">原创</span>
-                
-                <!-- 原创转载结束 -->
-                
-                <!-- 作者信息开始 -->
-                <span padding:3px 5px 3px 5px; margin-right:15px;line-height:1;color:#fff;font-size: 12pxmargin-top:5px>
+        <div class="article-meta">
+            <!-- 原创转载开始 -->
+            
+                <span style="float: left;padding: 3px 5px 3px 5px;margin-right: 15px;border-radius: .25em;background-color:#5cb85c;line-height:1;color:#fff;font-size: 12px;margin-top:5px">原创</span>
+            
+            <!-- 原创转载结束 -->
+            
+            <!-- 作者信息开始 -->
+            <span style="padding:3px 5px 3px 5px; margin-right:15px;line-height:1;color:#fff;font-size: 12px;margin-top:5px">
         <i class="fa fa-user"></i> 张珮磊
     </span>
-                <!-- 作者信息结束 -->
-                
-                
-                    <i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"></span>次
-                
-            </div>
+            <!-- 作者信息结束 -->
+            
+            
+                <i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"></span>次
+            
+        </div>
         <div class="content">
             <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>学习一门语言的时候，难免从最简单的程序结构学起，这些东西在掌握了一门别的开发语言的情况(如大名鼎鼎的java)，就会显得如鱼得水了，下面会把我学习一些简单例子分享出来。<br><a id="more"></a></p>
 <h2 id="基本程序结构"><a href="#基本程序结构" class="headerlink" title="基本程序结构"></a>基本程序结构</h2><p>快速为一些变量赋值<br><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> (</span><br><span class="line">	NUM1 = <span class="hljs-number">1</span> + <span class="hljs-literal">iota</span></span><br><span class="line">	NUM2</span><br><span class="line">	NUM3</span><br><span class="line">	NUM4</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//输出结果：1，2，4，8</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">TestPrint</span><span class="hljs-params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	t.Log(NUM1, NUM2, NUM3, NUM4)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
