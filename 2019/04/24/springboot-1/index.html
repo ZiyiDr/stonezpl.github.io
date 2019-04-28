@@ -161,6 +161,15 @@
                     
                     
                 </div>
+
+            </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                springboot(三)——application.properties和application.yml是何时解析的
+            
+        </h1>
+            <div class="article-meta">
                 <!-- 原创转载开始 -->
                 
                 <!-- 原创转载结束 -->
@@ -175,13 +184,6 @@
                     <i class="fa fa-eye"></i> <span id="busuanzi_value_page_pv"></span>次
                 
             </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                springboot(三)——application.properties和application.yml是何时解析的
-            
-        </h1>
-
         <div class="content">
             <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>用过的springboot的小伙伴都知道springboot不需要再像springmvc引入那么多的配置文件，只需要加入application.properties或者application.yml即可，比如在上一篇文章讲到数据库的配置，只需要在文件引入如下的配置即可：<br><figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring.datasource.url=jdbc:mysql://127.0.0.1:3306/zplxjj?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=GMT%2B8</span><br><span class="line">spring.datasource.username=root</span><br><span class="line">spring.datasource.password=@ZPLxjj12345</span><br><span class="line">spring.datasource.driver-class-name=com.mysql.jdbc.Driver</span><br></pre></td></tr></table></figure></p>
 <p>下面简单介绍下springboot在启动的时候是在何时读取的properties和yml文件的内容的<br><a id="more"></a></p>
