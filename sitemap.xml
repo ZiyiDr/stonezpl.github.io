@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.zplxjj.com/about/index.html</loc>
+    
+    <lastmod>2019-04-29T13:43:36.991Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.zplxjj.com/2019/04/29/spring-cloud/</loc>
+    
+    <lastmod>2019-04-29T13:40:50.114Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.zplxjj.com/2019/04/24/springboot/</loc>
     
     <lastmod>2019-04-28T05:49:24.201Z</lastmod>
@@ -68,13 +82,6 @@
     <loc>https://www.zplxjj.com/legal/index.html</loc>
     
     <lastmod>2019-04-28T02:56:08.315Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.zplxjj.com/about/index.html</loc>
-    
-    <lastmod>2019-04-25T00:36:42.621Z</lastmod>
     
   </url>
   
