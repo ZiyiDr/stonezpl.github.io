@@ -15,7 +15,7 @@
 <meta property="og:description" content="Sentinel 介绍随着微服务的流行，服务和服务之间的稳定性变得越来越重要。 Sentinel 以流量为切入点，从流量控制、熔断降级、系统负载保护等多个维度保护服务的稳定性。 Sentinel 具有以下特征:  丰富的应用场景： Sentinel 承接了阿里巴巴近 10 年的双十一大促流量的核心场景，例如秒杀（即突发流量控制在系统容量可以承受的范围）、消息削峰填谷、实时熔断下游不可用应用等。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.zplxjj.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-11T08:35:54.527Z">
+<meta property="og:updated_time" content="2019-05-11T08:44:18.423Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="springcloud(二)——spring-cloud-alibaba集成sentinel入门">
 <meta name="twitter:description" content="Sentinel 介绍随着微服务的流行，服务和服务之间的稳定性变得越来越重要。 Sentinel 以流量为切入点，从流量控制、熔断降级、系统负载保护等多个维度保护服务的稳定性。 Sentinel 具有以下特征:  丰富的应用场景： Sentinel 承接了阿里巴巴近 10 年的双十一大促流量的核心场景，例如秒杀（即突发流量控制在系统容量可以承受的范围）、消息削峰填谷、实时熔断下游不可用应用等。">
@@ -171,7 +171,7 @@
                         <span class="level-item has-text-grey">
                             
                             
-                            5 分钟 读完 (大约 728 个字)
+                            5 分钟 读完 (大约 730 个字)
                 </span>
                     
                     
@@ -201,14 +201,13 @@
 </li>
 </ul>
 <p>第二步：新建一个启动类和controller<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">@SpringBootApplication</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Application</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(Application.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">@RestController</span></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestController</span> </span>&#123;</span><br><span class="line">    <span class="hljs-meta">@GetMapping</span>(value = <span class="hljs-string">"/hello"</span>)</span><br><span class="line">    <span class="hljs-meta">@SentinelResource</span>(<span class="hljs-string">"hello"</span>)</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">hello</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">"Hello Sentinel"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>第三步：引入dashboard<br>可以直接下载sentinel-dashboard的jar包，也可以自己编译，我这边这里clone了代码自己编译，代码地址：<a href="https://github.com/alibaba/Sentinel" target="_blank" rel="noopener">https://github.com/alibaba/Sentinel</a>,执行命令</p>
-<blockquote>
-<p>mvn clean package<br>会得到：sentinel-dashboard.jar，执行命令启动dashboard：<br> java -jar sentinel-dashboard.jar<br>这样默认是8080端口，在浏览器输入：<a href="http://localhost:8080，默认账号密码：sentinel:sentinel，看到控制台界面为部署成功：" target="_blank" rel="noopener">http://localhost:8080，默认账号密码：sentinel:sentinel，看到控制台界面为部署成功：</a></p>
-</blockquote>
+<p>第三步：引入dashboard<br>可以直接下载sentinel-dashboard的jar包，也可以自己编译，我这边这里clone了代码自己编译，代码地址：<a href="https://github.com/alibaba/Sentinel" target="_blank" rel="noopener">https://github.com/alibaba/Sentinel</a>,执行命令<br><figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean package</span><br></pre></td></tr></table></figure></p>
+<p>会得到：sentinel-dashboard.jar，执行命令启动dashboard：<br><figure class="highlight sh hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar sentinel-dashboard.jar</span><br></pre></td></tr></table></figure></p>
+<p>这样默认是8080端口，在浏览器输入：<a href="http://localhost:8080，默认账号密码：sentinel:sentinel，看到控制台界面为部署成功：" target="_blank" rel="noopener">http://localhost:8080，默认账号密码：sentinel:sentinel，看到控制台界面为部署成功：</a></p>
 <p>第四步：引入配置：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server.port=8088</span><br><span class="line">spring.application.name=spring-cloud-alibaba-sentinel-demo</span><br><span class="line"></span><br><span class="line"># sentinel dashboard</span><br><span class="line">spring.cloud.sentinel.transport.dashboard=localhost:8080</span><br></pre></td></tr></table></figure></p>
 <p>第五步：启动spring boot 项目，继续访问localhost:8080,会看到如下界面<img src="/2019/05/11/springcloud/pringcloud001.png" alt></p>
-<p>第五步：使用Sentinel实现接口限流(在控制台)<img src="/2019/05/11/springcloud/springcloud002.png" alt></p>
-<p>第六步：测试<br>通过上面的配置，实现的是/hello接口qps最大是2，如果qps大于2，则快速失败，配置完成，点击保存，我们快速刷新浏览器，会发现快速失败<br><img src="/2019/05/11/springcloud/springcloud003.png" alt></p>
+<p>第六步：使用Sentinel实现接口限流(在控制台)<img src="/2019/05/11/springcloud/springcloud002.png" alt></p>
+<p>第七步：测试<br>通过上面的配置，实现的是/hello接口qps最大是2，如果qps大于2，则快速失败，配置完成，点击保存，我们快速刷新浏览器，会发现快速失败<br><img src="/2019/05/11/springcloud/springcloud003.png" alt></p>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>这篇文章只是springcloud和sentinel的入门，复杂的一些代码配置和文件配置后期介绍</p>
 
         </div>
