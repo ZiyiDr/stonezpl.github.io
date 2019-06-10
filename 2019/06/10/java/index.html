@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="前言最近在项目中碰到个一个场景，我们需要把自己的java项目jar包部署到一个第三方的服务器上，虽然双方互相信任，但是综合考虑，避免别人拿到jar包后可以很快的编译出源码，我们决定给代码加一层混淆，虽然此方法不能从根源上解决问题，但是做了一层混淆，也可以增加阅读源码的难度，总结了一下，写下这篇文章。 如何反编译java代码我用的是mac电脑，从官网:http://java-decompiler.g">
+    <meta name="description" content="前言最近在项目中碰到个一个场景，我们需要把自己的java项目jar包部署到一个第三方的服务器上，虽然双方互相信任，但是综合考虑，避免别人拿到jar包后可以很快的编译出源码，我们决定给代码加一层混淆，虽然此方法不能从根源上解决问题，但是做了一层混淆，也可以增加阅读源码的难度，总结了一下，写下这篇文章。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java混淆了吗">
 <meta property="og:url" content="https://www.zplxjj.com/2019/06/10/java/index.html">
 <meta property="og:site_name" content="张珮磊想静静">
-<meta property="og:description" content="前言最近在项目中碰到个一个场景，我们需要把自己的java项目jar包部署到一个第三方的服务器上，虽然双方互相信任，但是综合考虑，避免别人拿到jar包后可以很快的编译出源码，我们决定给代码加一层混淆，虽然此方法不能从根源上解决问题，但是做了一层混淆，也可以增加阅读源码的难度，总结了一下，写下这篇文章。 如何反编译java代码我用的是mac电脑，从官网:http://java-decompiler.g">
+<meta property="og:description" content="前言最近在项目中碰到个一个场景，我们需要把自己的java项目jar包部署到一个第三方的服务器上，虽然双方互相信任，但是综合考虑，避免别人拿到jar包后可以很快的编译出源码，我们决定给代码加一层混淆，虽然此方法不能从根源上解决问题，但是做了一层混淆，也可以增加阅读源码的难度，总结了一下，写下这篇文章。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.zplxjj.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-06-10T11:08:03.220Z">
+<meta property="og:updated_time" content="2019-06-10T11:10:27.268Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java混淆了吗">
-<meta name="twitter:description" content="前言最近在项目中碰到个一个场景，我们需要把自己的java项目jar包部署到一个第三方的服务器上，虽然双方互相信任，但是综合考虑，避免别人拿到jar包后可以很快的编译出源码，我们决定给代码加一层混淆，虽然此方法不能从根源上解决问题，但是做了一层混淆，也可以增加阅读源码的难度，总结了一下，写下这篇文章。 如何反编译java代码我用的是mac电脑，从官网:http://java-decompiler.g">
+<meta name="twitter:description" content="前言最近在项目中碰到个一个场景，我们需要把自己的java项目jar包部署到一个第三方的服务器上，虽然双方互相信任，但是综合考虑，避免别人拿到jar包后可以很快的编译出源码，我们决定给代码加一层混淆，虽然此方法不能从根源上解决问题，但是做了一层混淆，也可以增加阅读源码的难度，总结了一下，写下这篇文章。">
 <meta name="twitter:image" content="https://www.zplxjj.com/images/og_image.png">
 
 
@@ -171,7 +171,7 @@
                         <span class="level-item has-text-grey">
                             
                             
-                            6 分钟 读完 (大约 890 个字)
+                            6 分钟 读完 (大约 891 个字)
                 </span>
                     
                     
@@ -185,7 +185,7 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在项目中碰到个一个场景，我们需要把自己的java项目jar包部署到一个第三方的服务器上，虽然双方互相信任，但是综合考虑，避免别人拿到jar包后可以很快的编译出源码，我们决定给代码加一层混淆，虽然此方法不能从根源上解决问题，但是做了一层混淆，也可以增加阅读源码的难度，总结了一下，写下这篇文章。</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在项目中碰到个一个场景，我们需要把自己的java项目jar包部署到一个第三方的服务器上，虽然双方互相信任，但是综合考虑，避免别人拿到jar包后可以很快的编译出源码，我们决定给代码加一层混淆，虽然此方法不能从根源上解决问题，但是做了一层混淆，也可以增加阅读源码的难度，总结了一下，写下这篇文章。<br><a id="more"></a></p>
 <h2 id="如何反编译java代码"><a href="#如何反编译java代码" class="headerlink" title="如何反编译java代码"></a>如何反编译java代码</h2><p>我用的是mac电脑，从官网:<a href="http://java-decompiler.github.io/#jd-gui-download" target="_blank" rel="noopener">http://java-decompiler.github.io/#jd-gui-download</a>下载JD-GUI，官网有很多版本，下载后安装打开即可，导入你想反编译的jar，我这里随便找了个jar包做演示<br><img src="/2019/06/10/java/2019-06-08-14-32-52.png" alt></p>
 <h2 id="何为java混淆"><a href="#何为java混淆" class="headerlink" title="何为java混淆"></a>何为java混淆</h2><p>细心的小伙伴肯定发现了，上面的截图有的包名是a，b，c这样命名的，但凡有点节操的程序员都不会这样命名的，这就是被混淆后的代码，让人不会一眼看出来代码里面的逻辑，效果会像下面这样<br><img src="/2019/06/10/java/2019-06-08-14-37-01.png" alt><br>可以看到类名，包名都被修改了</p>
 <h2 id="进行java混淆"><a href="#进行java混淆" class="headerlink" title="进行java混淆"></a>进行java混淆</h2><p>我们以之前springboot项目为例，进行service层的代码的混淆，呼啸前效果如下：<br><img src="/2019/06/10/java/2019-06-08-14-46-17.png" alt><br><img src="/2019/06/10/java/2019-06-08-14-46-36.png" alt></p>
