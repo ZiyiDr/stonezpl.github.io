@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="前言最近看了elasticsearch除了7.x的版本，加上项目中用elasticsearch挺频繁，索性记录下学习的过程，一开始，准备在本机上面搭建ELK 搭建ELK——elasticsearch第一步选择合适的版下载本：https://www.elastic.co/cn/downloads/elasticsearch">
+    <meta name="description" content="前言最近看了elasticsearch出了7.x的版本，加上项目中用elasticsearch挺频繁，索性记录下学习的过程，一开始，准备在本机上面搭建ELK 搭建ELK——elasticsearch第一步选择合适的版下载本：https://www.elastic.co/cn/downloads/elasticsearch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="elasticsearch+logstash+kibana 7.2.0版本搭建">
 <meta property="og:url" content="https://www.zplxjj.com/2019/07/25/elasticsearch/index.html">
 <meta property="og:site_name" content="张珮磊想静静">
-<meta property="og:description" content="前言最近看了elasticsearch除了7.x的版本，加上项目中用elasticsearch挺频繁，索性记录下学习的过程，一开始，准备在本机上面搭建ELK 搭建ELK——elasticsearch第一步选择合适的版下载本：https://www.elastic.co/cn/downloads/elasticsearch">
+<meta property="og:description" content="前言最近看了elasticsearch出了7.x的版本，加上项目中用elasticsearch挺频繁，索性记录下学习的过程，一开始，准备在本机上面搭建ELK 搭建ELK——elasticsearch第一步选择合适的版下载本：https://www.elastic.co/cn/downloads/elasticsearch">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.zplxjj.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-25T11:31:07.298Z">
+<meta property="og:updated_time" content="2019-07-25T11:34:04.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="elasticsearch+logstash+kibana 7.2.0版本搭建">
-<meta name="twitter:description" content="前言最近看了elasticsearch除了7.x的版本，加上项目中用elasticsearch挺频繁，索性记录下学习的过程，一开始，准备在本机上面搭建ELK 搭建ELK——elasticsearch第一步选择合适的版下载本：https://www.elastic.co/cn/downloads/elasticsearch">
+<meta name="twitter:description" content="前言最近看了elasticsearch出了7.x的版本，加上项目中用elasticsearch挺频繁，索性记录下学习的过程，一开始，准备在本机上面搭建ELK 搭建ELK——elasticsearch第一步选择合适的版下载本：https://www.elastic.co/cn/downloads/elasticsearch">
 <meta name="twitter:image" content="https://www.zplxjj.com/images/og_image.png">
 
 
@@ -185,7 +185,7 @@
             
         </h1>
         <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近看了elasticsearch除了7.x的版本，加上项目中用elasticsearch挺频繁，索性记录下学习的过程，一开始，准备在本机上面搭建ELK</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近看了elasticsearch出了7.x的版本，加上项目中用elasticsearch挺频繁，索性记录下学习的过程，一开始，准备在本机上面搭建ELK</p>
 <h2 id="搭建ELK——elasticsearch"><a href="#搭建ELK——elasticsearch" class="headerlink" title="搭建ELK——elasticsearch"></a>搭建ELK——elasticsearch</h2><h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>选择合适的版下载本：<a href="https://www.elastic.co/cn/downloads/elasticsearch" target="_blank" rel="noopener">https://www.elastic.co/cn/downloads/elasticsearch</a><br><a id="more"></a></p>
 <h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>下载完成后解压后进入目录<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  elasticsearch-7.2.0 ls</span><br><span class="line">LICENSE.txt    NOTICE.txt     README.textile bin            config         data           jdk            lib            logs           modules        plugins</span><br></pre></td></tr></table></figure></p>
 <h3 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h3><p>启动命令：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/elasticsearch</span><br></pre></td></tr></table></figure></p>
