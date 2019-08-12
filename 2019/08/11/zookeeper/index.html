@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="之前在公司由于业务需要，对zookeeper进行了一些知识点的梳理进行分享，对一些刚刚接触zookeeper的小伙伴来说，或许可以借鉴一下 一、ZOOKEEPER介绍简介 Zookeeper致力于提供一个高性能、高可用，且具备严格的顺序访问控制能力的分布式协调服务。 设计目标  简单的数据结构:共享的树形结构，类似文件系统，存储于内存; 可以构建集群:避免单点故障，3-5台机器就可以组成集群，超过">
+    <meta name="description" content="之前在公司由于业务需要，对zookeeper进行了一些知识点的梳理进行分享，对一些刚刚接触zookeeper的小伙伴来说，或许可以借鉴一下 一、zookeeper介绍简介 Zookeeper致力于提供一个高性能、高可用，且具备严格的顺序访问控制能力的分布式协调服务。 设计目标  简单的数据结构:共享的树形结构，类似文件系统，存储于内存; 可以构建集群:避免单点故障，3-5台机器就可以组成集群，超过">
 <meta property="og:type" content="article">
 <meta property="og:title" content="zookeeper的一篇概述">
 <meta property="og:url" content="https://www.zplxjj.com/2019/08/11/zookeeper/index.html">
 <meta property="og:site_name" content="张珮磊想静静">
-<meta property="og:description" content="之前在公司由于业务需要，对zookeeper进行了一些知识点的梳理进行分享，对一些刚刚接触zookeeper的小伙伴来说，或许可以借鉴一下 一、ZOOKEEPER介绍简介 Zookeeper致力于提供一个高性能、高可用，且具备严格的顺序访问控制能力的分布式协调服务。 设计目标  简单的数据结构:共享的树形结构，类似文件系统，存储于内存; 可以构建集群:避免单点故障，3-5台机器就可以组成集群，超过">
+<meta property="og:description" content="之前在公司由于业务需要，对zookeeper进行了一些知识点的梳理进行分享，对一些刚刚接触zookeeper的小伙伴来说，或许可以借鉴一下 一、zookeeper介绍简介 Zookeeper致力于提供一个高性能、高可用，且具备严格的顺序访问控制能力的分布式协调服务。 设计目标  简单的数据结构:共享的树形结构，类似文件系统，存储于内存; 可以构建集群:避免单点故障，3-5台机器就可以组成集群，超过">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.zplxjj.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-08-11T14:14:23.665Z">
+<meta property="og:updated_time" content="2019-08-12T01:52:59.072Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zookeeper的一篇概述">
-<meta name="twitter:description" content="之前在公司由于业务需要，对zookeeper进行了一些知识点的梳理进行分享，对一些刚刚接触zookeeper的小伙伴来说，或许可以借鉴一下 一、ZOOKEEPER介绍简介 Zookeeper致力于提供一个高性能、高可用，且具备严格的顺序访问控制能力的分布式协调服务。 设计目标  简单的数据结构:共享的树形结构，类似文件系统，存储于内存; 可以构建集群:避免单点故障，3-5台机器就可以组成集群，超过">
+<meta name="twitter:description" content="之前在公司由于业务需要，对zookeeper进行了一些知识点的梳理进行分享，对一些刚刚接触zookeeper的小伙伴来说，或许可以借鉴一下 一、zookeeper介绍简介 Zookeeper致力于提供一个高性能、高可用，且具备严格的顺序访问控制能力的分布式协调服务。 设计目标  简单的数据结构:共享的树形结构，类似文件系统，存储于内存; 可以构建集群:避免单点故障，3-5台机器就可以组成集群，超过">
 <meta name="twitter:image" content="https://www.zplxjj.com/images/og_image.png">
 
 
@@ -171,7 +171,7 @@
                         <span class="level-item has-text-grey">
                             
                             
-                            9 分钟 读完 (大约 1409 个字)
+                            9 分钟 读完 (大约 1410 个字)
                 </span>
                     
                     
@@ -186,15 +186,15 @@
         </h1>
         <div class="content">
             <p>之前在公司由于业务需要，对zookeeper进行了一些知识点的梳理进行分享，对一些刚刚接触zookeeper的小伙伴来说，或许可以借鉴一下<br><br></p>
-<h2 id="一、ZOOKEEPER介绍"><a href="#一、ZOOKEEPER介绍" class="headerlink" title="一、ZOOKEEPER介绍"></a>一、ZOOKEEPER介绍</h2><p><strong>简介</strong><br> Zookeeper致力于提供一个<strong>高性能</strong>、<strong>高可用</strong>，且具备<strong>严格的顺序访问</strong>控制能力的分布式协调服务。</p>
+<h2 id="一、zookeeper介绍"><a href="#一、zookeeper介绍" class="headerlink" title="一、zookeeper介绍"></a>一、zookeeper介绍</h2><p><strong>简介</strong><br> Zookeeper致力于提供一个<strong>高性能</strong>、<strong>高可用</strong>，且具备<strong>严格的顺序访问</strong>控制能力的分布式协调服务。</p>
 <p><strong>设计目标</strong></p>
 <ul>
 <li><strong>简单的数据结构:</strong>共享的树形结构，类似文件系统，存储于内存;</li>
 <li><strong>可以构建集群:</strong>避免单点故障，3-5台机器就可以组成集群，超过半数，正常工作就能对外提供服务;</li>
 <li><strong>顺序访问:</strong>对于每个写请求，zk会分配一个全局唯一的递增编号，利用 这个特性可以实现高级协调服务;</li>
-<li><strong>高性能:</strong>基于内存操作，服务于非事务请求，适用于读操作为主的业务 场景。3台zk集群能达到13w QPS;</li>
+<li><strong>高性能:</strong>基于内存操作，服务于非事务请求，适用于读操作为主的业务 场景。3台zk集群能达到13w QPS;<a id="more"></a>
+<strong>应用场景</strong></li>
 </ul>
-<p><strong>应用场景</strong></p>
 <ol>
 <li>数据发布订阅 </li>
 <li>负载均衡</li>
