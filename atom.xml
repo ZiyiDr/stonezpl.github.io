@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.zplxjj.com/"/>
-  <updated>2019-09-03T11:00:21.362Z</updated>
+  <updated>2019-09-24T01:07:43.887Z</updated>
   <id>https://www.zplxjj.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git版本库迁移</title>
+    <link href="https://www.zplxjj.com/2019/09/24/git/"/>
+    <id>https://www.zplxjj.com/2019/09/24/git/</id>
+    <published>2019-09-24T01:05:38.000Z</published>
+    <updated>2019-09-24T01:07:43.887Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><pre><code>今天工作中碰到个需求，需要将git里面groupA中的一个项目迁移到groupB中，通常麻烦点的做法就是在groupB中建一个新项目，将所有代码拷贝过去，但是这样的话，所有的分支和历史记录就没有了。基于此，有没有一个好办法呢，可以通过命令行的操作，就将一个项目完整的迁移过去呢。在网上查询了一些资料，找到了这样的方法，在这里做一个记录</code></pre><h2 id="迁移步骤"><a href="#迁移步骤" class="headerlink" title="迁移步骤"></a>迁移步骤</h2><p>第一步：克隆老项目到本地的一个目录下<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone --bare git@git.xxx.com:groupA/old_project.git</span><br></pre></td></tr></table></figure></p><a id="more"></a><p>第二步：进入目录<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ cd old_project.git</span><br><span class="line">➜  old_project.git git:(master)</span><br></pre></td></tr></table></figure></p><p>第三步：在groupB新建一个项目：new_project<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --mirror git@git.xxx.com:groupB/new_project.git</span><br></pre></td></tr></table></figure></p><p>基于此，项目完整的从groupA迁移到groupB了<br>第四步：删除老版本，重新克隆新版本就可以了</p><h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><p>–bare 创建的克隆版本库都不包含工作区，直接就是版本库的内容，这样的版本库称为裸版本库。</p><p><strong>更多内容欢迎访问博客</strong>：<a href="http://www.zplxjj" target="_blank" rel="noopener">http://www.zplxjj</a>和个人公众号<br><img src="/2019/09/24/git/stonezplxjj1.png" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;今天工作中碰到个需求，需要将git里面groupA中的一个项目迁移到groupB中，通常麻烦点的做法就是在groupB中建一个新项目，将所有代码拷贝过去，但是这样的话，所有的分支和历史记录就没有了。
+基于此，有没有一个好办法呢，可以通过命令行的操作，就将一个项目完整的迁移过去呢。在网上查询了一些资料，找到了这样的方法，在这里做一个记录
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;迁移步骤&quot;&gt;&lt;a href=&quot;#迁移步骤&quot; class=&quot;headerlink&quot; title=&quot;迁移步骤&quot;&gt;&lt;/a&gt;迁移步骤&lt;/h2&gt;&lt;p&gt;第一步：克隆老项目到本地的一个目录下&lt;br&gt;&lt;figure class=&quot;highlight plain hljs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git clone --bare git@git.xxx.com:groupA/old_project.git&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="git" scheme="https://www.zplxjj.com/categories/git/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>xxl-job学习笔记(一)——使用xxl-job搭建作业调度平台</title>
